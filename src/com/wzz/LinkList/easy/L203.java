@@ -1,4 +1,4 @@
-package com.wzz.LinkList;
+package com.wzz.LinkList.easy;
 
 /*
 删除链表中等于给定值 val 的所有节点。

@@ -1,4 +1,4 @@
-package com.wzz.LinkList;
+package com.wzz.LinkList.easy;
 
 /*
 反转一个单链表。

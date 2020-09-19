@@ -1,7 +1,6 @@
-package com.wzz.LinkList;
+package com.wzz.LinkList.easy;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 
 /*
 请判断一个链表是否为回文链表。
