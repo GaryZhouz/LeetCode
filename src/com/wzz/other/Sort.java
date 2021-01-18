@@ -9,33 +9,34 @@ import java.util.Random;
  * 快速排序
  */
 public class Sort {
+    static int[] a = {1, -1, 2, 1, 3, 5};
+
     public static void main(String[] args) {
-        int[] a = {-1, 1, 2, 1, 3, 5};
         System.out.println("快速排序:");
         quickSort(a, 0, a.length - 1);
-        print(a);
+        print();
 
         System.out.println("\n=================");
 
         System.out.println("冒泡排序:");
         maoPao(a);
-        print(a);
+        print();
 
         System.out.println("\n=================");
 
         System.out.println("选择排序:");
         selectSort(a);
-        print(a);
+        print();
 
         System.out.println("\n=================");
 
         System.out.println("插入排序:");
         insert_sort(a);
-        print(a);
+        print();
 
         System.out.println("\n堆排序:");
         heap_sort(a, a.length);
-        print(a);
+        print();
     }
 
     //快速排序
@@ -91,10 +92,12 @@ public class Sort {
     //插入排序
     public static void insert_sort(int[] nums) {
         int len = nums.length;
-        for (int i = 1; i < len; i++)
-            for (int j = i; j > len - 1 && nums[j] < nums[j - 1]; j--) {
-                swap(nums, j, j - 1);
+        for (int i = 1; i < len; i++) {
+            for (int j = i; j > 0; j--) {
+                if (nums[j - 1] > nums[j])
+                    swap(nums, j - 1, j);
             }
+        }
     }
 
     //当列表第一个是以下标0开始，结点下标为i,左孩子则为2*i+1,
@@ -131,9 +134,11 @@ public class Sort {
         nums[y] = temp;
     }
 
-    private static void print(int[] a) {
+    private static void print() {
         for (int value : a) {
             System.out.print(value + " ");
         }
+        // 还原数组
+        a = new int[]{1, -1, 2, 1, 3, 5};
     }
 }

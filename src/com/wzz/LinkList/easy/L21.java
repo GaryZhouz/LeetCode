@@ -12,7 +12,7 @@ public class L21 {
         ListNode resNode = new ListNode(-1);
         ListNode help = resNode;
         while (l1 != null && l2 != null) {
-            if (l1.val < l2.val) {//对其值精心判断
+            if (l1.val < l2.val) {//对其值进行判断
                 help.next = l1;
                 l1 = l1.next;
             } else {
