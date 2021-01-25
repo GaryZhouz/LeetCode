@@ -1,29 +1,51 @@
 package com.wzz;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @Date 2020/11/29 19:13
  * @created by wzz
- * 1000万无序号数组,找出最大的十项
  */
 public class Main {
-    public static void main(String[] args) {
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i = 0; i < 1000_0000; i++) {
-            list.add(new Random().nextInt(10000));
+
+    static class ListNode {
+        int val;
+        ListNode next;
+
+        public ListNode(int val) {
+            this.val = val;
         }
-        System.out.println(new Main().top10(list));
     }
 
-    public ArrayList<Integer> top10(List<Integer> input) {
-        Collections.sort(input);
-        Collections.reverse(input);
-        ArrayList<Integer> res = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            res.add(input.get(i));
+    public static ListNode rev(ListNode target) {
+        List<ListNode> nodes = new ArrayList<>();
+        while (target != null) {
+            nodes.add(new ListNode(target.val));
+            target = target.next;
         }
-        Collections.reverse(res);
-        return res;
+        Collections.reverse(nodes);
+        ListNode resNode = new ListNode(-1);
+        ListNode temp = resNode;
+        for (ListNode node : nodes) {
+            resNode.next = node;
+            resNode = resNode.next;
+        }
+        return temp.next;
+    }
+
+    public static void main(String[] args) {
+        ListNode listNode1 = new ListNode(1);
+        ListNode listNode2 = new ListNode(2);
+        ListNode listNode3 = new ListNode(3);
+        listNode1.next = listNode2;
+        listNode2.next = listNode3;
+
+        ListNode rev = rev(listNode1);
+        while (rev != null){
+            System.out.println(rev.val);
+            rev = rev.next;
+        }
     }
 }
