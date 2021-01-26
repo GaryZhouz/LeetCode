@@ -1,0 +1,9 @@
+package com.wzz.other.factory.method;
+
+/**
+ * @Date 2021/1/20 11:26
+ * @created by wzz
+ */
+public interface Phone {
+    void name();
+}

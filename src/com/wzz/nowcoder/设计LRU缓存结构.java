@@ -34,7 +34,7 @@ public class 设计LRU缓存结构 {
         List<Integer> list = new ArrayList<>();
         for (int i = 0; i < operators.length; i++) {
             if (operators[i][0] == 1) {// set操作
-                if (map.size() >= k) {// 如果大小大于了
+                if (map.size() >= k) {// 如果大小大于了k的容量大小
                     map.remove(map.keySet().iterator().next());
                 }
                 map.put(operators[i][1], operators[i][2]);
