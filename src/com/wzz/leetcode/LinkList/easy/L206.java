@@ -1,5 +1,7 @@
 package com.wzz.leetcode.LinkList.easy;
 
+import com.wzz.leetcode.LinkList.ListNode;
+
 /*
 反转一个单链表。
 

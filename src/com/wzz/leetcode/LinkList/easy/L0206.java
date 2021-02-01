@@ -1,5 +1,7 @@
 package com.wzz.leetcode.LinkList.easy;
 
+import com.wzz.leetcode.LinkList.ListNode;
+
 /*
 编写一个函数，检查输入的链表是否是回文的。
 

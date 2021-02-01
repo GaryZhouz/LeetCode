@@ -45,7 +45,6 @@ public class L888 {
             sum -= xAlice;
         }
         for(int xAlice : A){
-            // 2.
             if(setBob.contains(xAlice + sum / 2)){
                 return new int[]{xAlice, xAlice + sum / 2};
             }

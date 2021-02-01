@@ -1,5 +1,7 @@
 package com.wzz.leetcode.LinkList.easy;
 
+import com.wzz.leetcode.LinkList.ListNode;
+
 /*
 输入两个链表，找出它们的第一个公共节点。
 如下面的两个链表：

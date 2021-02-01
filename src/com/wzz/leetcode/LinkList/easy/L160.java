@@ -1,4 +1,7 @@
 package com.wzz.leetcode.LinkList.easy;
+
+import com.wzz.leetcode.LinkList.ListNode;
+
 /*
 编写一个程序，找到两个单链表相交的起始节点。
 如下面的两个链表：

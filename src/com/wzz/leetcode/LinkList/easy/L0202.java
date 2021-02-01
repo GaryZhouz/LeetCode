@@ -1,5 +1,7 @@
 package com.wzz.leetcode.LinkList.easy;
 
+import com.wzz.leetcode.LinkList.ListNode;
+
 /*
 实现一种算法，找出单向链表中倒数第 k 个节点。返回该节点的值。
 

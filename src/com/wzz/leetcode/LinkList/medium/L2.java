@@ -1,4 +1,6 @@
-package com.wzz.leetcode.LinkList.easy;
+package com.wzz.leetcode.LinkList.medium;
+
+import com.wzz.leetcode.LinkList.ListNode;
 
 /**
  * 给出两个 非空 的链表用来表示两个非负的整数。其中，它们各自的位数是按照 逆序 的方式存储的，并且它们的每个节点只能存储 一位 数字。
@@ -20,12 +22,32 @@ package com.wzz.leetcode.LinkList.easy;
 public class L2 {
 
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
-        ListNode rs = new ListNode(l1.val + l2.val);
-        while (l1.next != null && l2.next != null) {
-            rs.next = new ListNode(l1.next.val + l2.next.val);
+        ListNode node = new ListNode(-1);
+        ListNode res = node;
+        // 标记是否有进位
+        boolean flag = false;
+        while (l1 != null || l2 != null) {
+            if (l1 == null)
+                l1 = new ListNode(0);
+            if (l2 == null)
+                l2 = new ListNode(0);
+            int val = l1.val + l2.val;
+            if (flag){
+                flag = false;
+                val++;
+            }
+            if (val >= 10) {
+                flag = true;
+                val -= 10;
+            }
+            node.next = new ListNode(val);
+            node = node.next;
             l1 = l1.next;
             l2 = l2.next;
         }
-        return rs;
+        // 如果最后一位进位
+        if (flag)
+            node.next = new ListNode(1);
+        return res.next;
     }
 }
