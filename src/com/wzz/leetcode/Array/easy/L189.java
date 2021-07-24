@@ -28,12 +28,18 @@ package com.wzz.leetcode.Array.easy;
  */
 public class L189 {
     public void rotate(int[] nums, int k) {
-        for (int j = 0; j < k; j++) {
-            for (int i = nums.length - 1; i >= 1; i--) {
-                int temp = nums[i - 1];
-                nums[i - 1] = nums[i];
-                nums[i] = temp;
-            }
+//        for (int j = 0; j < k; j++) {
+//            for (int i = nums.length - 1; i >= 1; i--) {
+//                int temp = nums[i - 1];
+//                nums[i - 1] = nums[i];
+//                nums[i] = temp;
+//            }
+//        }
+        int n = nums.length;
+        int[] newArr = new int[n];
+        for (int i = 0; i < n; ++i) {
+            newArr[(i + k) % n] = nums[i];
         }
+        System.arraycopy(newArr, 0, nums, 0, n);
     }
 }
