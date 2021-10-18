@@ -18,6 +18,7 @@ public class Offer24 {
         ListNode prev = null;
         //当前连标的节点
         ListNode cur = head;
+        // 反向改造一条链表，头插
         while (cur != null) {
             ListNode nextTemp = cur.next;
             cur.next = prev;
