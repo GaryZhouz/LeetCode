@@ -19,7 +19,7 @@ package com.wzz.leetcode.Array.easy;
 链接：https://leetcode-cn.com/problems/que-shi-de-shu-zi-lcof
 著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
  */
-public class Offer53 {
+public class Offer53_2 {
     public int missingNumber(int[] nums) {
         for (int i = 0; i < nums.length; i++) {
             if (i != nums[i]) return i;
