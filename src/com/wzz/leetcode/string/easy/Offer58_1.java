@@ -41,7 +41,22 @@ import java.util.stream.Collectors;
 public class Offer58_1 {
     public String reverseWords(String s) {
 //        return methodByStingBuilder(s);
-        return methodByStack(s);
+//        return methodByStack(s);
+        return methodByTwoPoint(s);
+    }
+
+    private String methodByTwoPoint(String s) {
+        s = s.trim();
+        String[] words = s.split("\\s+");
+        int leftPoint = 0, rightPoint = words.length - 1;
+        while (leftPoint < rightPoint) {
+            String temp = words[leftPoint];
+            words[leftPoint] = words[rightPoint];
+            words[rightPoint] = temp;
+            leftPoint++;
+            rightPoint--;
+        }
+        return String.join(" ", words);
     }
 
     private String methodByStack(String s) {

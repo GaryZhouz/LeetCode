@@ -24,18 +24,18 @@ import com.wzz.leetcode.LinkList.ListNode;
  */
 public class Offer18 {
     public ListNode deleteNode(ListNode head, int val) {
-        ListNode l1 = new ListNode(-1);
-        ListNode l2 = l1;
-        while (head != null) {
-            System.out.println(head.val == val);
-            if (head.val != val) {
-                l1.next = head;
-                l1 = l1.next;
-            }else l1.next = null;
-            //else这里防止需要删除的是最后一个节点,然后前面的操作保存的是倒数第二个节点的地址
-            // 所以会导致倒数第二个节点的地址后面跟随着一个next 所以需要清空
-            head = head.next;
+        ListNode listNode = new ListNode(Integer.MAX_VALUE);
+        listNode.next = head;
+        ListNode prevNode = listNode;
+        ListNode tempNode = listNode;
+        while(tempNode != null){
+            if(tempNode.val == val){
+                prevNode.next = tempNode.next;
+                break;
+            }
+            prevNode = tempNode;
+            tempNode = tempNode.next;
         }
-        return l2.next;
+        return listNode.next;
     }
 }
