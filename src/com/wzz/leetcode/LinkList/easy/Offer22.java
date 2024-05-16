@@ -15,6 +15,24 @@ import com.wzz.leetcode.LinkList.ListNode;
  */
 public class Offer22 {
     public ListNode getKthFromEnd(ListNode head, int k) {
+//        return historyMethod(head, k);
+        return newMethod(head, k);
+    }
+
+    private ListNode newMethod(ListNode head, int k) {
+        ListNode slowPoint = head;
+        ListNode fastPoint = head;
+        for (int i = 0; i < k; i++) {
+            fastPoint = fastPoint.next;
+        }
+        while (fastPoint != null) {
+            fastPoint = fastPoint.next;
+            slowPoint = slowPoint.next;
+        }
+        return slowPoint;
+    }
+
+    private ListNode historyMethod(ListNode head, int k) {
         int count = 0;
         ListNode node = head;
         while (node != null) {

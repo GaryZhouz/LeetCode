@@ -1,6 +1,7 @@
-package com.wzz.leetcode.tree.easy;
+package com.wzz.leetcode.tree.medium;
 
 import com.sun.jmx.remote.internal.ArrayQueue;
+import com.wzz.leetcode.tree.easy.TreeNode;
 
 import java.util.ArrayList;
 import java.util.List;

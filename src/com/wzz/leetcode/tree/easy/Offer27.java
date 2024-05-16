@@ -51,9 +51,4 @@ public class Offer27 {
         node.left = node.right;
         node.right = temp;
     }
-    /**
-     * 执行用时：
-     * 0 ms, 在所有 Java 提交中击败了 100.00%的用户
-     * 内存消耗：37.1 MB, 在所有 Java 提交中击败了75.51%的用户
-     */
 }
