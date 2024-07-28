@@ -46,4 +46,25 @@ public class L27 {
         Arrays.sort(nums);
         return count;
     }
+
+    public int removeElement2(int[] nums, int val) {
+        int right = nums.length - 1;
+        for (int i = 0; i <= right; i++) {
+            if (nums[i] == val) {
+                if (nums[right] == val) {
+                    i--;
+                    right--;
+                } else {
+                    swap(nums, i, right);
+                }
+            }
+        }
+        return right + 1;
+    }
+
+    public void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
+    }
 }

@@ -1,6 +1,8 @@
 package com.wzz.leetcode.string.medium;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 /**
  * 给定一个字符串，请你找出其中不含有重复字符的 最长子串 的长度。
@@ -33,7 +35,7 @@ import java.util.HashSet;
  */
 public class L3 {
     public int lengthOfLongestSubstring(String s) {
-        if (s.length() == 0)
+        if (s.isEmpty())
             return 0;
         int count = 0;
         int max = 0;
@@ -41,18 +43,33 @@ public class L3 {
         HashSet<Character> set = new HashSet<>();
         for (int i = 0; i < s.length(); i++) {
             for (int j = i; j < s.length(); j++) {
-                if (!set.contains(s.charAt(j))){
+                if (!set.contains(s.charAt(j))) {
                     set.add(s.charAt(j));
                     count++;
-                }
-                else {
-                    max = Math.max(max,count);
+                } else {
+                    max = Math.max(max, count);
                     set.clear();
                     count = 0;
                     break;
                 }
             }
         }
-        return Math.max(max,count);
+        return Math.max(max, count);
     }
+
+    public static int lengthOfLongestSubstring2(String s) {
+        if (s.isEmpty())
+            return 0;
+        int max = 0, left = 0;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            if (map.containsKey(s.charAt(i))) {
+                left = Math.max(left, map.get(s.charAt(i)) + 1);
+            }
+            map.put(s.charAt(i), i);
+            max = Math.max(max, i - left + 1);
+        }
+        return max;
+    }
+
 }

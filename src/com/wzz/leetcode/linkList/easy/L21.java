@@ -28,4 +28,21 @@ public class L21 {
         help.next = l1 == null ? l2 : l1;
         return resNode.next;
     }
+
+    public ListNode mergeTwoLists2(ListNode list1, ListNode list2) {
+        ListNode virtualNode = new ListNode(-1);
+        ListNode resNode = virtualNode;
+        while (list1 != null && list2 != null) {
+            if (list1.val < list2.val) {
+                virtualNode.next = list1;
+                list1 = list1.next;
+            } else {
+                virtualNode.next = list2;
+                list2 = list2.next;
+            }
+            virtualNode = virtualNode.next;
+        }
+        virtualNode.next = list2 == null ? list1 : list2;
+        return resNode.next;
+    }
 }

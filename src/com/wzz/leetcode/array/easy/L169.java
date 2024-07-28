@@ -1,6 +1,7 @@
 package com.wzz.leetcode.array.easy;
 
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
@@ -38,10 +39,26 @@ public class L169 {
                 .max(Integer::compareTo).get();
         AtomicInteger result = new AtomicInteger();
         frequencyMap.forEach((key, value) -> {
-            if (Objects.equals(max, value)){
+            if (Objects.equals(max, value)) {
                 result.set(key);
             }
         });
         return result.get();
+    }
+
+    public int majorityElement2(int[] nums) {
+        Arrays.sort(nums);
+        int count = 1, left = 0, res = nums[0];
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[left] != nums[i] || i == nums.length - 1) {
+                int temp = i - left + (i == nums.length - 1 ? 1 : 0);
+                if (count < temp) {
+                    count = temp;
+                    res = nums[left];
+                }
+                left = i;
+            }
+        }
+        return res;
     }
 }

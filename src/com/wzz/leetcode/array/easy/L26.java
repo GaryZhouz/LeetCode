@@ -55,4 +55,16 @@ public class L26 {
         }
         return 1;
     }
+
+    public int removeDuplicates2(int[] nums) {
+        int snow = 0, fast = 1;
+        while (fast < nums.length) {
+            if (nums[fast] != nums[snow]) {
+                nums[snow + 1] = nums[fast];
+                snow++;
+            }
+            fast++;
+        }
+        return snow + 1;
+    }
 }

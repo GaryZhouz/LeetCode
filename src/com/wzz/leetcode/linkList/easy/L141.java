@@ -75,4 +75,23 @@ public class L141 {
         }
         return false;
     }
+
+    public boolean hasCycle2(ListNode head) {
+        if (head == null) {
+            return false;
+        }
+        ListNode snow = head, fast = head.next;
+        while (fast != null) {
+            if (fast == snow) {
+                return true;
+            }
+            fast = fast.next;
+            if (fast != null) {
+                fast = fast.next;
+            }
+            snow = snow.next;
+        }
+        return false;
+    }
+
 }
