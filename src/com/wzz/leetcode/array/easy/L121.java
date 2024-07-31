@@ -29,11 +29,11 @@ package com.wzz.leetcode.array.easy;
 public class L121 {
     public int maxProfit(int[] prices) {
         int max = 0, min = Integer.MAX_VALUE;
-        for (int i = 0; i < prices.length; i++) {
-            if (prices[i] < min) {
-                min = prices[i];
-            } else if (prices[i] - min >= max) {
-                max = prices[i] - min;
+        for (int price : prices) {
+            if (price < min) {
+                min = price;
+            } else if (price - min >= max) {
+                max = price - min;
             }
         }
         return max;

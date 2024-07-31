@@ -42,4 +42,23 @@ public class L189 {
         }
         System.arraycopy(newArr, 0, nums, 0, n);
     }
+
+    public static void rotate2(int[] nums, int k) {
+        int length = nums.length;
+        int needReverseLength = k % length;
+        reverse(nums, 0, length - 1);
+        reverse(nums, 0, needReverseLength - 1);
+        reverse(nums, needReverseLength, length - 1);
+    }
+
+    public static void reverse(int[] nums, int i, int j) {
+        while (i < j) {
+            int temp = nums[i];
+            nums[i] = nums[j];
+            nums[j] = temp;
+            i++;
+            j--;
+        }
+    }
+
 }

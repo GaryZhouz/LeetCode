@@ -1,5 +1,7 @@
 package com.wzz.leetcode.array.medium;
 
+import java.util.Arrays;
+
 /**
  * @Date 2021/7/25 11:21
  * @created by wzz
@@ -55,5 +57,17 @@ public class L45 {
 //            }
 //        }
 //        return result;
+    }
+
+    public int jump2(int[] nums) {
+        int[] dp = new int[nums.length];
+        for (int i = 1; i < nums.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (nums[j] >= i - j) {
+                    dp[i] = dp[i] == 0 ? dp[j] + 1 : Math.min(dp[i], dp[j] + 1);
+                }
+            }
+        }
+        return dp[nums.length - 1];
     }
 }

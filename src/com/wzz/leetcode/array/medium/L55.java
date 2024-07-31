@@ -57,4 +57,16 @@ public class L55 {
         }
         return false;
     }
+
+    public boolean canJump2(int[] nums) {
+        int max = 0;
+        for (int i = 0; i < nums.length; i++) {
+            // 如果某个节点的索引大于他和他之前最大能跳的长度则直接返回false
+            if (i > max) {
+                return false;
+            }
+            max = Math.max(max, nums[i] + i);
+        }
+        return true;
+    }
 }
