@@ -39,4 +39,22 @@ public class L101 {
         if (p == null || q == null) return false;//左子树 和 右子树 有一个为空 则此树不是镜像对称树
         return p.val == q.val && dfs(p.left, q.right) && dfs(p.right, q.left);
     }
+
+    public boolean isSymmetric2(TreeNode root) {
+        if (root.left == null && root.right == null) {
+            return true;
+        } else if (root.left == null || root.right == null) {
+            return false;
+        }
+        return check(root.left, root.right);
+    }
+
+    public boolean check(TreeNode left, TreeNode right) {
+        if (left == null && right == null) {
+            return true;
+        } else if (left == null || right == null || left.val != right.val) {
+            return false;
+        }
+        return check(left.right, right.left) && check(left.left, right.right);
+    }
 }

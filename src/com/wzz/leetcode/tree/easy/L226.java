@@ -40,7 +40,7 @@ public class L226 {
     }
 
     private void swap(TreeNode node) {
-        if (node != null){
+        if (node != null) {
             if (node.left != null) swap(node.left);
             if (node.right != null) swap(node.right);
 
@@ -51,4 +51,19 @@ public class L226 {
 
     }
 
+    public TreeNode invertTree2(TreeNode root) {
+        invert(root);
+        return root;
+    }
+
+    public void invert(TreeNode node) {
+        if (node == null) {
+            return;
+        }
+        TreeNode temp = node.left;
+        node.left = node.right;
+        node.right = temp;
+        invert(node.left);
+        invert(node.right);
+    }
 }

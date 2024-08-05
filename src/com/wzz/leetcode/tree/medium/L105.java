@@ -52,4 +52,30 @@ public class L105 {
         root.right = build(preorder, map, p_l + 1 + left_node_num, p_r, i_root_index + 1, i_r);
         return root;
     }
+
+    public TreeNode buildTree2(int[] preorder, int[] inorder) {
+        Map<Integer, Integer> inorderMappingIndex = new HashMap<>();
+        for (int i = 0; i < inorder.length; i++) {
+            inorderMappingIndex.put(inorder[i], i);
+        }
+        return build2(preorder, inorderMappingIndex, 0, preorder.length - 1, 0, inorder.length - 1);
+    }
+
+    public TreeNode build2(int[] preorder, Map<Integer, Integer> inorderMappingIndex, int p_left, int p_right, int i_left, int i_right) {
+        if (p_left > p_right || i_left > i_right) {
+            return null;
+        }
+        TreeNode root = new TreeNode(preorder[p_left]);
+        Integer rootInorderIndex = inorderMappingIndex.get(root.val);
+        // 左子树节点个数
+        int leftRootTotal = rootInorderIndex - i_left;
+        // 左子树根的index(前序遍历 根 左子树 右子树 所以+1就是左子树的根)
+        int leftSubTreeIndexStart = p_left + 1;
+        int leftSubTreeIndexEnd = p_left + leftRootTotal;
+        // 右子树
+        int rightSubTreeIndexStart = p_left + leftRootTotal + 1;
+        root.left = build(preorder, inorderMappingIndex, leftSubTreeIndexStart, leftSubTreeIndexEnd, i_left, rootInorderIndex - 1);
+        root.right = build(preorder, inorderMappingIndex, rightSubTreeIndexStart, p_right, rootInorderIndex + 1, i_right);
+        return root;
+    }
 }
